@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background: linear-gradient(to right,#e9fbdc 50%, #ffff 50%);
+}
+
+.login-container {
+  font-family: 'Poppins';
+  background: white;
+  display: flex;
+  width: 140vh;
+  border-radius: 15px;
+  box-shadow: 0 3px 3px #c3d921;
+  overflow: hidden;
+  margin: 40px auto;
+}
+
+.left-side {
+  flex: 1;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+
+.left-side .fitness-logo  {
+  width: 100%;
+  height: auto;
+}
+
+.right-side {
+  flex: 1;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin:30px;
+}
+
+.crystaldelta-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.crystaldelta-logo img{
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+
+
+.login-form {
+  width: 100%;
+}
+
+.login-form h3 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 200;
+  width:70%;
+  color: #333;
+  margin-left:55px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 10px;
+  margin: 15px;
+  text-decoration: none;
+  border-style: none;
+  border-bottom: 3px solid #ccc;
+  border-radius: 5px;
+  color:black;
+  font-size: 19px;
+  font-weight:800;
+
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #c3d921;
+  color: #333;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #b0c81b;
+}
+
+.login-register {
+  text-align: center;
+  margin: 35px;
+  font-size: 20px;
+}
+
+.login-register :last-child {
+  color: #6b751f;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.login-register link:hover {
+  text-decoration: underline;
+}
