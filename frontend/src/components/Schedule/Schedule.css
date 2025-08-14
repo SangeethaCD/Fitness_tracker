@@ -1,0 +1,32 @@
+.scheduled-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 12px;
+  width:380px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  justify-content: space-between;
+}
+
+.icon {
+  font-size: 36px;
+  margin-right: 12px;
+}
+
+.details h4 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.details p {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: #555;
+}

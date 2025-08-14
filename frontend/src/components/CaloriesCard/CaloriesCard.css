@@ -1,0 +1,25 @@
+
+.calories-card {
+  border-radius: 12px !important;
+  min-width: 120px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calories-content {
+  padding: 16px !important;
+}
+.calories-progress{
+    margin-left:3%;
+}
+
+.calories-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.calories-subtitle {
+  color: #666;
+}

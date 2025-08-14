@@ -1,0 +1,58 @@
+.header {
+  display: flex;
+  align-items: center;
+  width:89%;
+  position: fixed;
+  top:0;
+  padding: 16px;
+  margin:5px;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.greeting {
+  font-size: 20px;
+  color: gray;
+  margin: 0;
+}
+
+.welcome {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0 0 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left:56%;
+}
+
+.subscribe-button {
+  background-color: #c5e93e;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 17px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.subscribe-button:hover {
+  background-color: #b0d437;
+}
+
+.notification-icon {
+  color: gray;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.notification-icon:hover {
+  color: black;
+}

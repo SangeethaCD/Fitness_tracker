@@ -6,6 +6,6 @@ const profileRouter =Router();
 
 profileRouter.post('/',authenticateToken,profileControllers.setProfile);
 profileRouter.put('/',authenticateToken,profileControllers.editProfile);
-profileRouter.get('/',authenticateToken,profileControllers.getProfilebyId);
+profileRouter.get('/:id',authenticateToken,profileControllers.getProfilebyId);
 
 export default profileRouter;

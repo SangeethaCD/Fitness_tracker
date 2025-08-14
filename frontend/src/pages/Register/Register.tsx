@@ -24,8 +24,6 @@ const Register = () => {
             {
                 console.log("There is some error in the response");
             }
-            const token = await response.json();
-            localStorage.setItem("token",token);
             navigate("/user/login");
         }
         catch(err)
@@ -34,7 +32,7 @@ const Register = () => {
         }
      }
     return (
-        <div className="Registration-container">
+        <div className="Registration-container .gradient-right">
 
             <div className="Register-left-side">
                 <div className="crystaldelta-logo">

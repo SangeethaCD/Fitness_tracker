@@ -1,0 +1,18 @@
+.gradient-left {
+  background: linear-gradient(to left, #e9fbdc 50%, #fff 50%);
+}
+
+.gradient-right {
+  background: linear-gradient(to right, #e9fbdc 50%, #fff 50%);
+}
+
+.white-background {
+  background: #fff;
+}
+.fullscreen-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}

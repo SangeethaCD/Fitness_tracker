@@ -3,6 +3,13 @@ import login from '../../assets/login.png'
 import crystalDelta from '../../assets/1000082726.png'
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
+
+interface DecodedToken {
+  userId: number;
+  email:string
+  
+}
 
 
 const Login = () => {
@@ -18,11 +25,21 @@ const Login = () => {
         },
          body: JSON.stringify({ userName, password })
       })
-      if(!response)
-      {
-        console.log("there is an error in the response");
-      }
-      navigate("/user/Dashboard/");    
+  
+      const data = await response.json();
+      if (!response.ok || !data.token) {
+  
+      alert(data.message || "Invalid username or password");
+      return;
+    }
+
+   
+     localStorage.setItem("token", data.token);
+
+      const decoded:DecodedToken=jwtDecode(data.token);
+       localStorage.setItem("userId", decoded.userId.toString());
+
+      navigate("/user/Dashboard/"); 
     }
     catch(err)
     {
@@ -31,7 +48,7 @@ const Login = () => {
     
   }
   return (
-    <div className="login-container">
+    <div className="login-container gradient-left ">
       <div className="left-side">
         <img
           className='fitness-logo'

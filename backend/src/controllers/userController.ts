@@ -4,10 +4,14 @@ import { User } from "../entities/User";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import { Profile } from "../entities/Profile";
+import { Goals } from "../entities/Goals";
 dotenv.config();
 
 
 const userRepo = AppDataSource.getRepository(User);
+const profileRepo = AppDataSource.getRepository(Profile);
+const goalsRepo =AppDataSource.getRepository(Goals);
 
 export async function createUser(req: Request, res: Response) {
     try {
@@ -29,7 +33,6 @@ export async function createUser(req: Request, res: Response) {
         newUser.password = hashedPassword;
 
         await userRepo.save(newUser);
-
         return res.status(201).json(newUser);
     } catch (err) {
         console.error("There is an error creating user:", err);
@@ -66,21 +69,53 @@ export async function getAllUsers(req: Request, res: Response) {
     }
 }
 
-
 export async function validataUser(req: Request, res: Response) {
     try {
         const { userName, password } = req.body;
+
+        if (!userName || !password) {
+            return res.status(400).json({ message: "Username and password are required." });
+        }
+
         const currentUser = await userRepo.findOne({
-            where:
-                { userName: userName }
+            where: { userName },
+            relations: ['profile', 'goals'],
         });
 
         if (!currentUser) {
-            return res.status(500).json({ error: "The user does not exists." });
+            return res.status(404).json({ message: "The user does not exist." });
         }
-        const hashedPassword = currentUser.password;
-        const isPasswordValid = await bcrypt.compare(password, hashedPassword);
-        if (!isPasswordValid) return res.status(400).json({ message: 'Invalid credentials' });
+
+        const isPasswordValid = await bcrypt.compare(password, currentUser.password);
+
+        if (!isPasswordValid) {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
+
+        
+        if (!currentUser.profile) {
+            const emptyProfile = profileRepo.create({
+                name: "",
+                location: "",
+                weight: 0,
+                height: 0,
+                user: currentUser
+            });
+            await profileRepo.save(emptyProfile);
+        }
+
+    
+        if (!currentUser.goals) {
+            const emptyGoals = goalsRepo.create({
+                running: 0,
+                steps: 0,
+                sleeping: 0,
+                weight: 0,
+                water: 0,
+                user: currentUser
+            });
+            await goalsRepo.save(emptyGoals);
+        }
 
         const token = jwt.sign(
             { userId: currentUser.userId, email: currentUser.email },
@@ -88,9 +123,10 @@ export async function validataUser(req: Request, res: Response) {
             { expiresIn: '1h' }
         );
 
-        res.json({ token });
-    }
-    catch (err) {
-        return res.status(500).json(err);
+        return res.status(200).json({ token });
+
+    } catch (err) {
+        console.error("Login error:", err);
+        return res.status(500).json({ message: "Internal server error" });
     }
 }

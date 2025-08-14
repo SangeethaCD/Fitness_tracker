@@ -6,6 +6,6 @@ const goalsRouter = Router();
 
 goalsRouter.post("/",authenticateToken,goalsController.setGoals);
 goalsRouter.put("/",authenticateToken,goalsController.editGoals);
-goalsRouter.get("/",authenticateToken,goalsController.getGoalsyId);
+goalsRouter.get("/:id",authenticateToken,goalsController.getGoalsyId);
 
 export default goalsRouter;

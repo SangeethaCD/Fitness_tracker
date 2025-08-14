@@ -1,0 +1,66 @@
+.sidebar {
+  width: 100px;
+  background-color: #f3f5f7;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left:0;
+  align-items: center;
+  padding: 20px;
+  height: 130vh;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+  margin-top:22px;
+}
+
+.logo-circle {
+  border-radius: 53%;
+  width:50px;
+  height:50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon {
+  color: green;
+}
+
+.logo-text {
+  font-size: 16px;
+  color: green;
+  margin-top: 4px;
+}
+
+.menu-items {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-button {
+  color: gray;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  background-color: #c5e93e;
+  color: black;
+}
+
+.menu-button.active {
+  background-color: #c5e93e;
+  color: black;
+}

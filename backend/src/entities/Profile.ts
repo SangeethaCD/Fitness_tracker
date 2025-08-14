@@ -6,16 +6,16 @@ export class Profile{
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column({default:""})
     name:string
 
     @Column({nullable: true})
     photo!: string
 
-    @Column()
+    @Column({default:""})
     location:string
 
-    @Column()
+    @Column({nullable:true})
     birthDate:Date
 
     @Column("float",{ default: 0 })

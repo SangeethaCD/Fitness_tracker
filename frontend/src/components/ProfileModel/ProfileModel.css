@@ -1,0 +1,93 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: white;
+  border-radius: 10px;
+  width: 350px;
+  padding: 20px;
+  font-family:'poppins','san-serif';
+  color:black;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-icon {
+  font-size: 1.5rem;
+}
+
+.close-button {
+  border: none;
+  background: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.tabs {
+  display: flex;
+  margin-top: 10px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #f1f1f1;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tab.active {
+  background: #d9f267;
+  color: #000;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+.modal-body input {
+  margin-bottom: 20px;
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.cancel-button {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.save-button {
+  background: #c3e265;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}

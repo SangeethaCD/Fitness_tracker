@@ -1,0 +1,285 @@
+
+.dashboard-container {
+  padding: 10px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  min-width: 1200px;
+  margin-top:10%;
+  margin-left:0%;
+  margin-right: 20%;
+}
+
+/* Card Styles */
+.health-card {
+  border-radius: 15px ;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  background-color:#1FD179;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.section-header {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* Layout Styles */
+.top-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1.5fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.charts-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.trainers-section {
+  margin-bottom: 20px;
+}
+
+.trainers-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+/* Progress Bars */
+.steps-progress {
+  height: 8px !important;
+  border-radius: 4px !important;
+  background-color: #e0e0e0 !important;
+}
+
+.steps-progress .MuiLinearProgress-bar {
+  background-color: #4CAF50 !important;
+}
+
+.water-progress {
+  height: 8px !important;
+  border-radius: 4px !important;
+  background-color: #e0e0e0 !important;
+}
+
+.water-progress .MuiLinearProgress-bar {
+  background-color: #2196F3 !important;
+}
+
+.calories-progress {
+  color: #FF9800 !important;
+}
+
+/* Heart Rate Card */
+.heart-rate-content {
+  text-align: center;
+}
+
+.heart-rate-content h4 {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.heart-status {
+  color: #4CAF50;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Activity Chart */
+.chart-card {
+  border-radius: 15px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  height: 100%;
+}
+
+.chart-percent {
+  font-size: 24px;
+  font-weight: 600;
+  color: #4CAF50;
+}
+
+.chart-subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.activity-bars {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 200px;
+  margin-top: 20px;
+}
+
+.bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar {
+  width: 30px;
+  background-color: #4CAF50;
+  border-radius: 5px 5px 0 0;
+  transition: height 0.3s ease;
+}
+
+.bar-container span {
+  font-size: 12px;
+  color: #777;
+}
+
+
+.donut-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.donut-center {
+  position: relative;
+  width: 50px;
+  height: 60px;
+  margin: 20px;
+}
+
+.donut-center .MuiCircularProgress-root {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.donut-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  width: 80%;
+}
+
+.progress-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.progress-list li {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* Trainer Card */
+.trainer-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.trainer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px ;
+}
+
+.trainer-avatar {
+  width: 80px !important;
+  height: 80px !important;
+  margin-bottom: 15px;
+}
+
+.trainer-name {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.trainer-role {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.trainer-stats {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.view-profile-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.view-profile-btn:hover {
+  background-color: #3e8e41;
+}
+
+/* Meals Card */
+.meals-card {
+  border-radius: 15px ;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) ;
+}
+
+.meal-item {
+  padding-left: 0 ;
+  padding-right: 0 ;
+}
+
+.meal-text .MuiListItemText-primary {
+  font-weight: 500 ;
+}
+
+.meal-text .MuiListItemText-secondary {
+  font-size: 12px ;
+  color: #777 ;
+}
+

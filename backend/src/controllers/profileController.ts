@@ -66,22 +66,26 @@ export async function editProfile(req: Request, res: Response) {
 }
 
 export async function getProfilebyId(req: Request, res: Response) {
-    try {
-        const userId = (req as any).user.userId;
+  try {
+    const Id = parseInt(req.params.id);
 
-        const getUserProfile = await profileRepo.findOne({
-            where: { user: { userId: userId } },
-            relations: ["user"], 
-        });
+    const newUser = await userRepo.findOneBy({ userId: Id });
 
-        if (!getUserProfile) {
-            return res.status(404).json({ error: "there is an error in finding the user's profile" });
-        }
-
-        return res.status(200).json(getUserProfile);
+    if (!newUser) {
+      return res.status(404).json({ error: "User not found" });
     }
-    catch(err)
-    {
-         return res.status(500).json({error:"There was an error updating the profile."});
+
+    const getUserProfile = await profileRepo.findOne({
+      where: { user: newUser }
+    });
+
+    if (!getUserProfile) {
+      return res.status(404).json({ error: "Profile not found for this user" });
     }
+
+    return res.status(200).json(getUserProfile);
+  } catch (err) {
+    console.error("Error fetching profile:", err);
+    return res.status(500).json({ error: "Internal server error", details: err });
+  }
 }

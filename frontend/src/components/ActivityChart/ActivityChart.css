@@ -1,0 +1,76 @@
+/* ActivityCard.css */
+.activity-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 300px;
+  background-color: #ffffff;
+}
+
+.activity-content {
+  padding: 24px;
+}
+
+.activity-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.activity-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #212121;
+  margin-bottom: 8px;
+}
+
+.activity-percentage {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4CAF50; /* Green */
+  margin-bottom: 4px;
+}
+
+.activity-subtitle {
+  font-size: 0.875rem;
+  color: #757575;
+}
+
+.activity-divider {
+  margin: 16px 0;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.activity-bars-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 120px;
+  margin-top: 16px;
+}
+
+.day-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.activity-bar {
+  width: 70%;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.3s ease;
+}
+
+/* Individual day colors - Friday is highlighted */
+.activity-bar.mon { height: 30%; background-color: #E0E0E0; }
+.activity-bar.tue { height: 50%; background-color: #E0E0E0; }
+.activity-bar.wed { height: 70%; background-color: #E0E0E0; }
+.activity-bar.thu { height: 60%; background-color: #E0E0E0; }
+.activity-bar.fri { height: 80%; background-color: #4CAF50; } /* Green */
+.activity-bar.sat { height: 40%; background-color: #E0E0E0; }
+.activity-bar.sun { height: 90%; background-color: #E0E0E0; }
+
+.day-label {
+  margin-top: 8px;
+  color: #757575;
+  font-size: 0.7rem;
+}
