@@ -30,7 +30,7 @@ const ProgressCard = () => {
           mb: 3
         }}>
           <svg width="100%" height="100%" viewBox="0 0 100 100">
-            {/* Background circle (optional) */}
+           
             <circle cx="50" cy="50" r="45" fill="none" stroke="#f5f5f5" strokeWidth="10" />
             
             {/* Activity segments */}
@@ -53,9 +53,7 @@ const ProgressCard = () => {
             })}
             
             {/* Center hole */}
-            <circle cx="50" cy="50" r="30" fill="white" />
-            
-            {/* Total hours label - Fixed SVG text styling */}
+            <circle cx="50" cy="50" r="30" fill="white" />  
             <text 
               x="50" 
               y="50" 

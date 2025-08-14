@@ -1,26 +1,23 @@
-// src/pages/Profile/Profile.tsx
-
 import "./profile.css";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ProfileModel from "../../components/ProfileModel/ProfileModel.tsx";
-import GoalCard from "../../components/Goals/Goals.tsx";
+import ProfileModel from "../../components/ProfileModel/ProfileModel";
+import GoalCard from "../../components/Goals/Goals";
 import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 import HotelIcon from "@mui/icons-material/Hotel";
-import Schedule from "../../components/Schedule/Schedule.tsx";
-import SelfImprovementIcon from "@mui/icons-material/SelfImprovement"; // Yoga & Swimming
-
+import Schedule from "../../components/Schedule/Schedule";
+import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 
 interface Profile {
-  fullName?: string;
-  userLocation?: string;
-  dateOfBirth?: string;
-  userHeight?: number;
-  userWeight?: number;
+  name?: string;
+  location?: string;
+  birthDate?: string;
+  height?: number;
+  weight?: number;
 }
 
 interface Goals {
@@ -38,21 +35,11 @@ const Profile = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
 
-
   useEffect(() => {
     const savedModal = localStorage.getItem("modalOpen");
     if (savedModal === "true") setModalOpen(true);
 
-    const savedProfile = localStorage.getItem("userProfile");
-    if (savedProfile) {
-      const data = JSON.parse(savedProfile);
-      setUserProfile(data);
-      let filled = 0;
-      Object.values(data).forEach((val) => {
-        if (val) filled++;
-      });
-      setCompletion(Math.round((filled / 5) * 100));
-    }
+   
     const savedGoals = localStorage.getItem("userGoals");
     if (savedGoals) {
       setUserGoals(JSON.parse(savedGoals));
@@ -60,19 +47,19 @@ const Profile = () => {
 
     const fetchProfile = async () => {
       const token = localStorage.getItem("token");
-      if (!token) return;
+      const userId = localStorage.getItem("userId");
+      if (!token || !userId) return;
 
-      const res = await fetch("http://localhost:3000/user/profile", {
+      const res = await fetch(`http://localhost:3000/user/profile/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       if (res.ok) {
         const data = await res.json();
         setUserProfile(data);
-        localStorage.setItem("userProfile", JSON.stringify(data));
         let filled = 0;
-        Object.values(data).forEach((v) => {
-          if (v) filled++;
+        Object.values(data).forEach((val) => {
+          if (val) filled++;
         });
         setCompletion(Math.round((filled / 5) * 100));
       }
@@ -80,16 +67,16 @@ const Profile = () => {
 
     const fetchGoals = async () => {
       const token = localStorage.getItem("token");
-      if (!token) return;
+      const userId = localStorage.getItem("userId");
+      if (!token || !userId) return;
 
-      const res = await fetch("http://localhost:3000/user/goals/", {
+      const res = await fetch(`http://localhost:3000/user/goals/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       if (res.ok) {
         const data = await res.json();
         setUserGoals(data);
-        localStorage.setItem("userGoals", JSON.stringify(data));
       }
     };
 
@@ -99,8 +86,7 @@ const Profile = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("userProfile");
-    localStorage.removeItem("userGoals");
+    localStorage.removeItem("userId");
     navigate("/user/login");
   };
 
@@ -128,12 +114,12 @@ const Profile = () => {
     <div className="profile-section">
       <div className="profile-header">
         <div className="profile-info">
-          <AccountCircleIcon fontSize="large" />
+          <AccountCircleIcon  fontSize="large" />
           <div>
-            <h4 className="profile-name">{userProfile.fullName || "Username"}</h4>
+            <h4 className="profile-name">{userProfile.name || "Username"}</h4>
             <div className="profile-location">
               <LocationOnIcon fontSize="small" />
-              <span>{userProfile.userLocation || "Location"}</span>
+              <span>{userProfile.location || "Location"}</span>
             </div>
           </div>
         </div>
@@ -155,16 +141,16 @@ const Profile = () => {
 
         <div className="Completion-Statistics">
           <div className="Statistics">
-            <span className="statistics-value">{userProfile.userWeight || 0}</span>
+            <span className="statistics-value">{userProfile.weight || 0}</span>
             <span className="statistics-unit">kg</span>
             <p>Weight</p>
           </div>
           <div className="Statistics">
-            <span className="statistics-value">{userProfile.userHeight || 0}</span>
+            <span className="statistics-value">{userProfile.height || 0}</span>
             <p>Height</p>
           </div>
           <div className="Statistics">
-            <span className="statistics-value">{calculateAge(userProfile.dateOfBirth)}</span>
+            <span className="statistics-value">{calculateAge(userProfile.birthDate)}</span>
             <span className="statistics-unit">yrs</span>
             <p>Age</p>
           </div>
@@ -192,7 +178,6 @@ const Profile = () => {
         </div>
       </div>
 
-
       <div className="scheduled-section">
         <h3>Scheduled</h3>
         <Schedule
@@ -217,11 +202,9 @@ const Profile = () => {
         onProfileUpdate={(updated, completion) => {
           setUserProfile(updated);
           setCompletion(completion);
-          localStorage.setItem("userProfile", JSON.stringify(updated));
         }}
         onGoalsUpdate={(updatedGoals) => {
-          setUserGoals(updatedGoals);
-          localStorage.setItem("userGoals", JSON.stringify(updatedGoals));
+          setUserGoals(updatedGoals)
         }}
       />
     </div>

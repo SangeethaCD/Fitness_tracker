@@ -10,14 +10,14 @@ export async function setProfile(req: Request, res: Response) {
     try {
         const userId = (req as any).user.userId;
         const currentUser = await userRepo.findOneBy({ userId: userId });
-        const { fullName, userLocation, dateOfBirth, userHeight, userWeight } = req.body;
+        const { name, location, birthDate, height, weight} = req.body;
 
         const createProfile = new Profile();
-        createProfile.name = fullName;
-        createProfile.location = userLocation;
-        createProfile.birthDate = dateOfBirth;
-        createProfile.height = userHeight;
-        createProfile.weight = userWeight;
+        createProfile.name = name;
+        createProfile.location = location;
+        createProfile.birthDate = birthDate;
+        createProfile.height = height;
+        createProfile.weight = weight;
         if (!currentUser) {
             return res.status(404).json({ error: "User not found" });
         }
@@ -38,7 +38,7 @@ export async function setProfile(req: Request, res: Response) {
 
 export async function editProfile(req: Request, res: Response) {
   try {
-    const { fullName, userLocation, dateOfBirth, userHeight, userWeight } = req.body;
+    const { Name, location, birthDate, height, weight } = req.body;
      const userId = (req as any).user.userId;
 
     const getProfile = await profileRepo.findOne({
@@ -51,11 +51,11 @@ export async function editProfile(req: Request, res: Response) {
     }
 
     await profileRepo.update(getProfile.id, {
-      name: fullName,
-      location: userLocation,
-      birthDate: new Date(dateOfBirth),
-      height: userHeight,
-      weight: userWeight,
+      name: Name,
+      location: location,
+      birthDate: new Date(birthDate),
+      height: height,
+      weight: weight,
     });
 
     res.status(200).json({ success: "The profile is successfully updated." });

@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import GoalModel from '../GoalModel/GoalModel'; 
 
 interface Profile {
-  fullName?: string;
-  userLocation?: string;
-  dateOfBirth?: string;
-  userHeight?: number;
-  userWeight?: number;
+  name?: string;
+  location?: string;
+  birthDate?: string;
+  height?: number;
+  weight?: number;
 }
 
 interface Goals {
@@ -58,8 +58,8 @@ const ProfileModal = ({
 
     const formattedProfile = {
       ...formData,
-      dateOfBirth: formData.dateOfBirth
-        ? new Date(formData.dateOfBirth).toISOString().split("T")[0]
+      dateOfBirth: formData.birthDate
+        ? new Date(formData.birthDate).toISOString().split("T")[0]
         : undefined,
     };
 
@@ -118,35 +118,35 @@ const ProfileModal = ({
 
             <div className="modal-body">
               <input
-                name="fullName"
+                name="Name"
                 placeholder="Full Name"
-                value={formData.fullName || ""}
+                value={formData.name || ""}
                 onChange={handleChange}
               />
               <input
-                name="userLocation"
+                name="location"
                 placeholder="Your Location"
-                value={formData.userLocation || ""}
+                value={formData.location || ""}
                 onChange={handleChange}
               />
               <input
                 type="date"
-                name="dateOfBirth"
-                value={formData.dateOfBirth || ""}
+                name="birthDate"
+                value={formData.birthDate || ""}
                 onChange={handleChange}
               />
               <input
                 type="number"
-                name="userHeight"
+                name="height"
                 placeholder="Your Height in cm"
-                value={formData.userHeight || ""}
+                value={formData.height || ""}
                 onChange={handleChange}
               />
               <input
                 type="number"
-                name="userWeight"
+                name="weight"
                 placeholder="Your Weight in kg"
-                value={formData.userWeight || ""}
+                value={formData.weight || ""}
                 onChange={handleChange}
               />
             </div>

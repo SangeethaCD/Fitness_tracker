@@ -114,3 +114,10 @@
 .login-register link:hover {
   text-decoration: underline;
 }
+
+.error-text {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}

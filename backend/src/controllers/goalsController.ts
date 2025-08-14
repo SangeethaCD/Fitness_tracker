@@ -67,7 +67,7 @@ export async function editGoals(req: Request, res: Response) {
 
 export async function getGoalsyId(req: Request, res: Response) {
     try {
-        const userId = (req as any).param.id;
+        const userId = parseInt(req.params.id);
 
         const getUserGoals = await goalsRepo.findOne({
             where: { user: { userId: userId } },
